@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import sortNewsByImage from "./sortNewsByImage";
+import response from "../response.json";
 
 const fetchNews = async (
   category?: Category | string,
@@ -70,7 +71,9 @@ const fetchNews = async (
     keywords
   );
 
-  const newsResponse = await res.json();
+  // avoid hitting the API call limit using the response.json file
+  // also temporarilly solves the Uncaught TypeError: Cannot read properties of null (reading 'myQuery')
+  const newsResponse = response || (await res.json());
 
   // Sort function by images vs not images present
   const news = sortNewsByImage(newsResponse.data.myQuery);
