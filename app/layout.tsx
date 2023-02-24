@@ -1,5 +1,5 @@
-import '../styles/globals.css';
-import Header from './Header';
+import "../styles/globals.css";
+import Header from "./Header";
 
 export default function RootLayout({
   children,
@@ -10,9 +10,9 @@ export default function RootLayout({
     <html>
       <head />
 
-      <body>
+      <body className="bg-gray-100 dar:bg-zinc-900 transition-all duration-700">
         <Header />
-        <div>{children}</div>
+        <div className="max-w-6xl mx-auto">{children}</div>
       </body>
     </html>
   );
