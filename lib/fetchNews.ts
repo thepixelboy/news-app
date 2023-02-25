@@ -65,15 +65,16 @@ const fetchNews = async (
     }
   );
 
-  console.log(
-    "LOADING NEW DATA FROM API for category >>> ",
-    category,
-    keywords
-  );
+  // console.log(
+  //   "LOADING NEW DATA FROM API for category >>> ",
+  //   category,
+  //   keywords
+  // );
 
   // avoid hitting the API call limit using the response.json file
   // also temporarilly solves the Uncaught TypeError: Cannot read properties of null (reading 'myQuery')
-  const newsResponse = response || (await res.json());
+  // const newsResponse = response || (await res.json());
+  const newsResponse = await res.json();
 
   // Sort function by images vs not images present
   const news = sortNewsByImage(newsResponse.data.myQuery);
